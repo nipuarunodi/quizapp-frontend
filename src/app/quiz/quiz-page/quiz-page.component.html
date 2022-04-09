@@ -1,1 +1,61 @@
-<p>quiz-page works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col col-2"></div>
+    <div class="col col-8">
+      <div class="card home-card" *ngIf="displayIndex >= totalQuestions">
+        <div class="card-header" style="text-align: center">
+          <h4>Level {{ levelId }} Completed</h4>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col col-12" style="text-align: center">
+              <h4>Level {{ levelId }} Score: {{totlaMarks}}/{{totalFullMarks}} </h4>
+              <button
+                type="button"
+                (click)="navigatetoLeaderBoard()"
+                class="btn btn-outline-danger btn-lg level-button"
+              >
+                View Leaderboard
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let question of questions; let i = index">
+        <div class="card home-card" *ngIf="i == displayIndex">
+          <div class="card-header" style="text-align: center">
+            <h4>{{ question.question }}</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col col-12" style="text-align: center">
+                <button
+                  *ngFor="let answer of question.answers; index as i"
+                  type="button"
+                  (click)="checkAnswer(question, answer)"
+                  class="btn btn-outline-info btn-lg level-button"
+                >
+                  {{ answer }}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prograss-bar" *ngIf="displayIndex < totalQuestions">
+        <h6>Your Progress : ({{ displayIndex + 1 }}/{{ totalQuestions }})</h6>
+        <div class="progress">
+          <div
+            class="progress-bar progress-bar-striped bg-danger"
+            role="progressbar"
+            style="width: 100%"
+            [attr.aria-valuenow]="displayIndex"
+            aria-valuemin="0"
+            aria-valuemax="10"
+          ></div>
+        </div>
+      </div>
+    </div>
+    <div class="col col-2"></div>
+  </div>
+</div>

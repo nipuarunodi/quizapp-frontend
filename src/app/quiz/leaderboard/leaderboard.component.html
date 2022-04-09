@@ -1,1 +1,35 @@
-<p>leaderboard works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col col-2"></div>
+    <div class="col col-8">
+      <div class="card home-card">
+        <div class="card-header" style="text-align: center">
+          <h2>Leaderboard</h2>
+        </div>
+        <div class="card-body">
+          <table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Total Score</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let score of scores; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ score.name }}</td>
+                <td>{{ score.email }}</td>
+                <td>{{ score.score }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- <button type="button" class="btn btn-outline-success btn-lg level-button" (click)="retry()">Retry</button> -->
+      <button type="button" class="btn btn-outline-success btn-lg level-button" (click)="homepage()">Home Page</button>
+    </div>
+    <div class="col col-2"></div>
+  </div>
+</div>
